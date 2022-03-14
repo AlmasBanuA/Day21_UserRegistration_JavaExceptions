@@ -1,10 +1,11 @@
 package com.day21;
 
 /**
- * UC7- As a User need to follow pre-defined Password rules.
+ * UC8- As a User need to follow pre-defined Password rules.
  * Rule1– minimum 8 Characters 
  * Rule2- Should have at least 1 Upper Case
  * Rule3- Should have at least 1 numeric number in the password
+ * Rule4- Should have at Exactly 1 Special Character in the password
  * NOTE – All rules must be passed
  */
 
@@ -67,14 +68,14 @@ public class UserRegistration {
 	/**
 	 * created method checkPassword and passing parameter in this it will check
 	 * Password is valid or not having Minimum 8 Characters and first letters should
-	 * be capital with one numeric number in that result will be in true or false
-	 * because method is boolean type
+	 * be capital with one numeric number and have one Exactly Special Character in
+	 * that result will be in true or false because method is boolean type
 	 * 
 	 * @param password- passing password
 	 * @return -return to method created
 	 */
 	public boolean checkPassword(String password) {
-		return (password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"));
+		return (password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[*.!@#$%^&(){}:'<>,.>/~`_+=|].).{8,}$"));
 	}
 
 }

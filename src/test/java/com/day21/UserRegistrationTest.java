@@ -10,8 +10,8 @@ import org.junit.Test;
  * TestCases for validating PhoneNumber
  * TestCases for validating Password for rule 1-Having minimum 8 characters
  * TestCases for validating Password for rule 2-Should have at least 1 Upper Case 
- * TestCases for validating Password for rule 3-Should have at least 1 numeric number in
- * the password
+ * TestCases for validating Password for rule 3-Should have at least 1 numeric number in the password
+ * TestCases for validating Password for rule 4-Should have Exactly 1 Special Character
  */
 public class UserRegistrationTest {
 
@@ -120,7 +120,7 @@ public class UserRegistrationTest {
 		/**
 		 * calling checkPassword method to see Password is valid
 		 */
-		boolean isPasswordValid = userRegistration.checkPassword("Abcdefg89");
+		boolean isPasswordValid = userRegistration.checkPassword("Abc@123gjyg");
 		Assert.assertTrue(isPasswordValid);
 	}
 
@@ -130,7 +130,7 @@ public class UserRegistrationTest {
 	 */
 	public void testPassword_MustReturnFalse() {
 		UserRegistration userRegistration = new UserRegistration();
-		boolean isPasswordInValid = userRegistration.checkPassword("aAbcdefghi");
+		boolean isPasswordInValid = userRegistration.checkPassword("abcdefghi");
 		Assert.assertFalse(isPasswordInValid);
 	}
 }
