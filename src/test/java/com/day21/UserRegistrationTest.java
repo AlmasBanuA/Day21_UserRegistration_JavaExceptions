@@ -13,6 +13,9 @@ import org.junit.Test;
  * TestCases for validating Password for rule 3-Should have at least 1 numeric number in the password
  * TestCases for validating Password for rule 4-Should have Exactly 1 Special Character
  * TestCases for validating all email samples provided separately
+ * Writing the JUnit Test for Happy as well as Sad test case.
+   - Happy Test Case validates the Entry Successfully
+   - Sad Test Cases fails the Entry
  */
 public class UserRegistrationTest {
 
@@ -133,5 +136,27 @@ public class UserRegistrationTest {
 		UserRegistration userRegistration = new UserRegistration();
 		boolean isPasswordInValid = userRegistration.checkPassword("abcdefghi");
 		Assert.assertFalse(isPasswordInValid);
+	}
+
+	@Test
+	/**
+	 * created method mood_Analyser_Test_Happy() as Happy Test Case validates the
+	 * Entry Successfully
+	 */
+	public void mood_Analyser_Test_Happy() {
+		UserRegistration userRegistration = new UserRegistration();
+		String isMoodHappy = userRegistration.moodAnalyzer("Almas", "Advani", "91 7903900074", "almas007.sm@gmail.com",
+				"Almas@2103");
+		Assert.assertEquals("HAPPY", isMoodHappy);
+	}
+
+	@Test
+	/**
+	 * created method mood_Analyser_Test_Sad() as Sad Test Cases fails the Entry
+	 */
+	public void mood_Analyser_Test_Sad() {
+		UserRegistration userRegistration = new UserRegistration();
+		String isMoodSad = userRegistration.moodAnalyzer("almas", "advani", "7903900074", "almas007@.com", "799235");
+		Assert.assertEquals("SAD", isMoodSad);
 	}
 }

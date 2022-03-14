@@ -16,7 +16,7 @@ public class TestSampleEmails {
 	/**
 	 * create Parameterized Constructor
 	 * 
-	 * @param emails         -passing EmailId's
+	 * @param emails -passing EmailId's
 	 * @param expectedResult -result is stored in boolean type
 	 */
 	public TestSampleEmails(String emails, boolean expectedResult) {
