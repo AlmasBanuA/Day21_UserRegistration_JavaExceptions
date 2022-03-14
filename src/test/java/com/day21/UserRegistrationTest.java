@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * testCases for validating lastName
+ * testCases for validating EmailId
  *
  */
 public class UserRegistrationTest {
@@ -56,5 +56,29 @@ public class UserRegistrationTest {
 		UserRegistration userRegistration = new UserRegistration();
 		boolean isLnameINValid = userRegistration.Lname("advani");
 		Assert.assertFalse(isLnameINValid);
+	}
+
+	@Test
+	/**
+	 * created method testEmailId_MustReturnTrue() for true condition
+	 */
+	public void testEmailId_MustReturnTrue() {
+		UserRegistration userRegistration = new UserRegistration();
+		/**
+		 * calling checkEmail method to see mailId is valid
+		 */
+		boolean isEmailValid = userRegistration.checkEmail("almas.ab@gmail.com");
+		Assert.assertTrue(isEmailValid);
+	}
+
+	@Test
+	/**
+	 * created method testEmailId_MustReturnFalse() for false condition
+	 */
+
+	public void testEmailId_MustReturnFalse() {
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isEmailInvalid = userRegistration.checkEmail("almas@.com");
+		Assert.assertFalse(isEmailInvalid);
 	}
 }
