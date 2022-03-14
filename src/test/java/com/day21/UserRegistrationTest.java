@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * testCases for validating firstName
+ * testCases for validating lastName
  *
  */
 public class UserRegistrationTest {
@@ -33,5 +33,28 @@ public class UserRegistrationTest {
 		UserRegistration userRegistration = new UserRegistration();
 		boolean isFnameValid = userRegistration.checkFName("almas");
 		Assert.assertFalse(isFnameValid);
+	}
+
+	/**
+	 * created method testingLastName() to check lastname is valid or not
+	 */
+	@Test
+	public void testLastNameValidMustReturnTrue() {
+		UserRegistration userRegistration = new UserRegistration();
+		/**
+		 * calling Lname method to see LastName is valid
+		 */
+		boolean isLnameValid = userRegistration.Lname("Advani");
+		Assert.assertTrue(isLnameValid);
+	}
+
+	/**
+	 * created method testLastNameInvalidMustReturnFalse for false condition
+	 */
+	@Test
+	public void testLastNameValidMustReturnFalse() {
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isLnameINValid = userRegistration.Lname("advani");
+		Assert.assertFalse(isLnameINValid);
 	}
 }

@@ -1,7 +1,7 @@
 package com.day21;
 
 /**
- * As a User need to enter a valid First Name
+ * UC2-As a User need to enter a valid Last Name
  * - First name starts with Cap and has minimum 3 characters
  * @author user-Almas
  *
@@ -28,4 +28,14 @@ public class UserRegistration {
 
 	}
 
+	/**
+	 * created method Lname and passing parameter in this it will check LastName is
+	 * valid or not result will be in true or false because method is boolean type
+	 * 
+	 * @param Lname -LastName of the String
+	 * @return - return to method created
+	 */
+	public boolean Lname(String Lname) {
+		return (Lname.matches("[A-Z][a-z]{3,}"));
+	}
 }
