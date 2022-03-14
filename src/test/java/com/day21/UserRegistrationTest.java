@@ -16,6 +16,7 @@ import org.junit.Test;
  * Writing the JUnit Test for Happy as well as Sad test case.
    - Happy Test Case validates the Entry Successfully
    - Sad Test Cases fails the Entry
+ *  JUnit Parameterized Test to validate multiple entry for the Email Address.
  */
 public class UserRegistrationTest {
 
@@ -160,3 +161,4 @@ public class UserRegistrationTest {
 		Assert.assertEquals("SAD", isMoodSad);
 	}
 }
+
