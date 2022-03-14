@@ -1,10 +1,8 @@
 package com.day21;
 
 /**
- * UC3- As a User need to enter a valid email 
- * -E.g. abc.xyz@bl.co.in - Email has 3 mandatory parts (abc, bl& co)
- * and 2 optional (xyz & in) with precise @ and . positions
- * @author user-Almas
+ * UC4- As a User need to follow pre-defined Mobile Format  
+ * -E.g. 91 9919819801 - Country code follow by space and 10 digit number
  *
  */
 
@@ -50,5 +48,17 @@ public class UserRegistration {
 	 */
 	public boolean checkEmail(String emailID) {
 		return (emailID.matches("^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$"));
+	}
+
+	/**
+	 * created method checkPhoneNum and passing parameter in this it will check
+	 * phoneNumber is valid or not result will be in true or false because method is
+	 * boolean type
+	 * 
+	 * @param phoneNum -passing phoneNumber
+	 * @return -return to method created
+	 */
+	public boolean checkPhoneNum(String phoneNum) {
+		return (phoneNum.matches("91\\s[0-9]{10}"));
 	}
 }
