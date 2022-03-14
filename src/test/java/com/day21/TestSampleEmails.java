@@ -1,7 +1,7 @@
 package com.day21;
 
 /**
- * JUnit Parameterized Test to validate multiple entry for the Email Address.
+ * JUnit Parameterized Test to validating multiple entry for the Email Address.
  */
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,44 +11,61 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * JUnit 4 has introduced a new feature called parameterized tests.
+ * Parameterized tests allow a developer to run the same test over and over
+ * again using different values There are five steps that you need to follow to
+ * create a parameterized test.
+ * 
+ * Annotate test class with @RunWith(Parameterized.class).
+ * 
+ * Create a public static method annotated with @Parameters that returns a
+ * Collection of Objects (as Array) as test data set.
+ * 
+ * Create a public constructor that takes in what is equivalent to one "row" of
+ * test data.
+ * 
+ * Create an instance variable for each "column" of test data.
+ * 
+ * Create your test case(s) using the instance variables as the source of the
+ * test data.
+ * 
+ */
 @RunWith(Parameterized.class)
 public class TestSampleEmails {
 	private String emails;
-	private boolean expectedResult;
+	private String expectedResult;
 
 	/**
-	 * create Parameterized Constructor
-	 * 
-	 * @param emails -passing EmailId's
-	 * @param expectedResult -result is stored in boolean type
+	 * creating parameterized constructor
+	 * @param emails -passing emails
+	 * @param expectedResult -result
 	 */
-	public TestSampleEmails(String emails, boolean expectedResult) {
+	public TestSampleEmails(String emails, String expectedResult) {
 		this.emails = emails;
 		this.expectedResult = expectedResult;
 	}
 
-	/**
-	 * Creating static method that generates & returns data
-	 * 
-	 * @return- returns data
-	 */
 	@Parameterized.Parameters
 	public static Collection input() {
-		return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc-100@yahoo.com", true },
-				{ "abc.100@yahoo.com", true }, { "abc111@abc.com", true }, { "abc-100@abc.net", true },
-				{ "abc.100@abc.com.au", true }, { "abc@1.com", true }, { "abc@gmail.com.com", true },
-				{ "abc+100@gmail.com", true }, { "abc", false }, { "abc@.com.my", false }, { "abc123@gmail.a", false },
-				{ "abc123@.com", false }, { "abc123@.com.com", false }, { ".abc@abc.com", false },
-				{ "abc()*@gmail.com", false }, { "abc@%*.com", false }, { "abc..2002@gmail.com", false },
-				{ "abc.@gmail.com", false }, { "abc@abc@gmail.com", false }, { "abc@gmail.com.1a", false } });
+		return Arrays.asList(new Object[][] { { "abc@yahoo.com", "Success" }, { "abc-100@yahoo.com", "Success" },
+				{ "abc.100@yahoo.com", "Success" }, { "abc111@abc.com", "Success" }, { "abc-100@abc.net", "Success" },
+				{ "abc.100@abc.com.au", "Success" }, { "abc@1.com", "Success" }, { "abc@gmail.com.com", "Success" },
+				{ "abc+100@gmail.com", "Success" }, });
 	}
 
 	@Test
 	/**
-	 * create method testEmailIds to check all the mail id's
+	 * creating testEmailsIds()
 	 */
 	public void testEmailIds() {
 		UserRegistration userRegistration = new UserRegistration();
-		Assert.assertEquals(expectedResult, userRegistration.checkEmail(emails));
+		String email = null;
+		try {
+			email = userRegistration.checkEmail(emails);
+		} catch (InvalidDetailExceptions e) {
+			Assert.assertEquals(expectedResult, email);
+		}
+
 	}
 }

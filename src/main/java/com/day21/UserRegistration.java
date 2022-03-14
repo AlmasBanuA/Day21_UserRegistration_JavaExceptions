@@ -32,7 +32,10 @@ package com.day21;
  *      -  Happy Test Case validates the Entry Successfully
  *      -  Sad Test Cases fails the Entry
  *      
- * UC11:-  JUnit Parameterized Test to validate multiple entry for the Email Address    
+ * UC11:-  JUnit Parameterized Test to validate multiple entry for the Email Address   
+ * 
+ * UC12:- Refactor the Code to throw custom exceptions in case of Invalid User Details 
+ *      - Rewrite all Test Cases to take in Custom
  */
 
 /**
@@ -40,86 +43,97 @@ package com.day21;
  *
  */
 public class UserRegistration {
-	/**
-	 * created method checkFName and passing parameter in this it will check
-	 * FirstName is valid or not result will be in true or false because method is
-	 * boolean type
-	 * 
-	 * @param fName -FirstName of the String
-	 * @return -return to method created
-	 */
-	public boolean checkFName(String fName) {
-		/**
-		 * regex pattern for FirstName
-		 */
-		return (fName.matches("[A-Z][a-z]{3,}"));
 
-	}
+	private static String nameFormat = "[A-Z][a-z]{2,}";
+	private static String emailFormat = "^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$";
+	private static String mobileFormat = "^[0-9]{1,2}[ ][0-9]{10}$";
+	private static String passwordFormat = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[*.!@#$%^&(){}:'<>,.>/~`_+=|].).{8,}$";
 
-	/**
-	 * created method LName and passing parameter in this it will check LastName is
-	 * valid or not result will be in true or false because method is boolean type
-	 * 
-	 * @param Lname -LastName of the String
-	 * @return - return to method created
-	 */
-	public boolean Lname(String Lname) {
-		return (Lname.matches("[A-Z][a-z]{3,}"));
-	}
-
-	/**
-	 * created method checkEmail and passing parameter in this it will check Email
-	 * is valid or not result will be in true or false because method is boolean
-	 * type
-	 * 
-	 * @param emailID -passing emailId
-	 * @return -return to method created
-	 */
-	public boolean checkEmail(String emailID) {
-		return (emailID.matches("^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$"));
-	}
-
-	/**
-	 * created method checkPhoneNum and passing parameter in this it will check
-	 * phoneNumber is valid or not result will be in true or false because method is
-	 * boolean type
-	 * 
-	 * @param phoneNum -passing phoneNumber
-	 * @return -return to method created
-	 */
-	public boolean checkPhoneNum(String phoneNum) {
-		return (phoneNum.matches("91\\s[0-9]{10}"));
-	}
-
-	/**
-	 * created method checkPassword and passing parameter in this it will check
-	 * Password is valid or not having Minimum 8 Characters and first letters should
-	 * be capital with one numeric number and have one Exactly Special Character in
-	 * that result will be in true or false because method is boolean type
-	 * 
-	 * @param password- passing password
-	 * @return -return to method created
-	 */
-	public boolean checkPassword(String password) {
-		return (password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[*.!@#$%^&(){}:'<>,.>/~`_+=|].).{8,}$"));
-	}
-
-	/**
-	 * creating method moodAnalyzer to check the mood happy or sad
-	 * 
-	 * @param fName-    passing FirstName
-	 * @param Lname-    Passing LastName
-	 * @param phoneNum- Passing PhoneNumber
-	 * @param emailID-  Passing EmailId
-	 * @param password- passing Password
-	 * @return -return to method created
-	 */
-	public String moodAnalyzer(String fName, String Lname, String phoneNum, String emailID, String password) {
-		if (checkFName(fName) == true && Lname(Lname) == true && checkEmail(emailID) == true
-				&& checkPhoneNum(phoneNum) == true && checkPassword(password) == true) {
-			return "HAPPY";
-		} else {
-			return "SAD";
+	public String checkFName(String fName) throws InvalidDetailExceptions {
+		try {
+			if (fName.matches(nameFormat)) {
+				return "Success";
+			} else {
+				throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_INVALID,
+						"Please provide Specific format");
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Please don't pass null value");
 		}
 	}
+
+	public String checkLName(String lName) throws InvalidDetailExceptions {
+		try {
+			if (lName.matches(nameFormat)) {
+				return "Success";
+			} else {
+				throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_INVALID,
+						"Please provide specific formate");
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Please don't pass null value");
+		}
+
+	}
+
+	public String checkEmail(String emailId) throws InvalidDetailExceptions {
+		try {
+			if (emailId.matches(emailFormat)) {
+				return "Success";
+			} else {
+				throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_INVALID,
+						"Please provide specific email");
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Don't provide null value");
+		}
+	}
+
+	public String checkPhoneNumber(String phoneNo) throws InvalidDetailExceptions {
+		try {
+			if (phoneNo.matches(mobileFormat)) {
+				return "Success";
+			} else {
+				throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_INVALID,
+						"Please provide specific phone number");
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Please don't pass null value");
+		}
+	}
+
+	public String checkPassword(String passcode) throws InvalidDetailExceptions {
+		try {
+			if (passcode.matches(passwordFormat)) {
+				return "Success";
+			} else {
+				throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_INVALID,
+						"Please Provide specific password");
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Please don't provide null Value");
+		}
+	}
+
+	public String moodAnalyse(String fName, String lName, String phoneNumber, String email, String password)
+			throws InvalidDetailExceptions {
+		try {
+			if (checkFName(fName) == "Success" && checkLName(lName) == "Success" && checkEmail(email) == "Success"
+					&& checkPhoneNumber(phoneNumber) == "Success" && checkPassword(password) == "Success") {
+				return "HAPPY";
+			} else {
+				return "SAD";
+			}
+		} catch (NullPointerException e) {
+			throw new InvalidDetailExceptions(InvalidDetailExceptions.ExceptionType.ENTERED_NULL,
+					"Please don't pass null value");
+		}
+
+	}
+
 }
