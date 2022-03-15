@@ -49,8 +49,9 @@ public class UserRegistration {
 	private static String mobileFormat = "^[0-9]{1,2}[ ][0-9]{10}$";
 	private static String passwordFormat = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[*.!@#$%^&(){}:'<>,.>/~`_+=|].).{8,}$";
 
-	/**created method name checkFName it will check first name is valid or not if it is valid in try block it matches and return 
-	as success or if it is invalid then it will throw exception or if it is null then null pointer exception will occurs**/
+	/** created method name checkFName it will check first name is valid or not if it is valid 
+	 *  in try block it matches and return as success or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
 	public String checkFName(String fName) throws InvalidDetailExceptions {
 		try {
 			if (fName.matches(nameFormat)) {
@@ -65,6 +66,9 @@ public class UserRegistration {
 		}
 	}
 
+	/** created method name checkLName it will check last name is valid or not if it is valid 
+	 *  in try block it matches and return as success or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
 	public String checkLName(String lName) throws InvalidDetailExceptions {
 		try {
 			if (lName.matches(nameFormat)) {
@@ -80,6 +84,9 @@ public class UserRegistration {
 
 	}
 
+	/** created method name checkEmail it will check Email is valid or not if it is valid 
+	 *  in try block it matches and return as success or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
 	public String checkEmail(String emailId) throws InvalidDetailExceptions {
 		try {
 			if (emailId.matches(emailFormat)) {
@@ -94,6 +101,9 @@ public class UserRegistration {
 		}
 	}
 
+	/** created method name checkPhoneNumber it will check PhoneNumber is valid or not if it is valid 
+	 *  in try block it matches and return as success or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
 	public String checkPhoneNumber(String phoneNo) throws InvalidDetailExceptions {
 		try {
 			if (phoneNo.matches(mobileFormat)) {
@@ -108,6 +118,9 @@ public class UserRegistration {
 		}
 	}
 
+	/** created method name checkPassword it will check password is valid or not if it is valid 
+	 *  in try block it matches and return as success or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
 	public String checkPassword(String passcode) throws InvalidDetailExceptions {
 		try {
 			if (passcode.matches(passwordFormat)) {
@@ -122,6 +135,11 @@ public class UserRegistration {
 		}
 	}
 
+	/** created method name moodAnalyse it will check first name, last name, phone number, email and password is 
+	 *  valid or not if it is valid in try block it matches it will enter to try block and return Happy Mood or
+	 *  else return  Sad Mood or if it is invalid then it will throw exception 
+	 *  or if it is null then null pointer exception will occurs **/
+	
 	public String moodAnalyse(String fName, String lName, String phoneNumber, String email, String password)
 			throws InvalidDetailExceptions {
 		try {
