@@ -24,7 +24,7 @@ package com.day21;
  * UC7 :-  Rule3- Should have at least 1 numeric number in the password
  * 
  * UC8:-   Rule4- Should have at Exactly 1 Special Character in the password
- * NOTE –  All rules must be passed
+ * NOTE â€“  All rules must be passed
  
  * UC9:-   Should clear all email samples provided separately
  
@@ -49,6 +49,8 @@ public class UserRegistration {
 	private static String mobileFormat = "^[0-9]{1,2}[ ][0-9]{10}$";
 	private static String passwordFormat = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[*.!@#$%^&(){}:'<>,.>/~`_+=|].).{8,}$";
 
+	/**created method name checkFName it will check first name is valid or not if it is valid in try block it matches and return 
+	as success or if it is invalid then it will throw exception or if it is null then null pointer exception will occurs**/
 	public String checkFName(String fName) throws InvalidDetailExceptions {
 		try {
 			if (fName.matches(nameFormat)) {
